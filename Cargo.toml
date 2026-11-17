@@ -2,12 +2,11 @@
 name = "rusteezy"
 version = "0.1.0"
 edition = "2024"
-rust-version = "1.88"
+rust-version = "1.90"
 description = "A GPU-accelerated ASCII renderer: a character grid drawn in one instanced call, with bloom, smooth color tweens and particles"
 license = "MIT OR Apache-2.0"
 readme = "README.md"
 repository = "https://github.com/Mwrnk/rusteezy"
-homepage = "https://github.com/Mwrnk/rusteezy"
 documentation = "https://docs.rs/rusteezy"
 keywords = ["ascii", "wgpu", "terminal", "bloom", "text-mode"]
 categories = ["graphics", "rendering", "game-development", "visualization"]
