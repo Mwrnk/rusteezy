@@ -5,10 +5,12 @@
 <h1 align="center">rusteezy</h1>
 
 <p align="center">
+  <!-- Uncomment after the first `cargo publish`:
   <a href="https://crates.io/crates/rusteezy"><img src="https://img.shields.io/crates/v/rusteezy.svg" alt="crates.io"></a>
   <a href="https://docs.rs/rusteezy"><img src="https://docs.rs/rusteezy/badge.svg" alt="docs.rs"></a>
+  -->
   <a href="https://github.com/Mwrnk/rusteezy/actions/workflows/ci.yml"><img src="https://github.com/Mwrnk/rusteezy/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <img src="https://img.shields.io/crates/l/rusteezy.svg" alt="MIT OR Apache-2.0">
+  <a href="#license"><img src="https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue.svg" alt="License: MIT OR Apache-2.0"></a>
 </p>
 
 <p align="center">
