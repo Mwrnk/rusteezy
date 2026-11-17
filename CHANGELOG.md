@@ -6,6 +6,11 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+- Performance examples, multi-threaded with rayon (a dev-dependency only):
+  `galaxy` (300k stars), `flow` (200k particles), `raymarch` (per-cell ray
+  marching with shadows, AO and reflections) and `life` (Game of Life on a dense grid).
+
 ## [0.1.0]
 
 First release.

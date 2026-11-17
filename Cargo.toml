@@ -35,6 +35,10 @@ pollster = "1"
 wgpu = "30.0.2"
 winit = "0.30.13"
 
+[dev-dependencies]
+# Only the heavy examples use it, to spread work across CPU cores.
+rayon = "1.12"
+
 [profile.dev]
 opt-level = 1
 

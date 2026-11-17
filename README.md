@@ -104,6 +104,31 @@ cargo run --release --example tree
   </tr>
 </table>
 
+### Performance showcase
+
+These four push the CPU and print their own timings in the bottom-left corner.
+The heavy work is spread across all cores with [rayon](https://crates.io/crates/rayon),
+which is a dev-dependency only.
+
+<table>
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/Mwrnk/rusteezy/main/docs/gifs/galaxy.gif" alt="Spiral galaxy of 300,000 stars"></td>
+    <td><img src="https://raw.githubusercontent.com/Mwrnk/rusteezy/main/docs/gifs/flow.gif" alt="200,000 particles in a flow field"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>galaxy</b>: 300,000 stars projected and splatted every frame</td>
+    <td align="center"><b>flow</b>: 200,000 particles, fading trails, glyphs follow the flow</td>
+  </tr>
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/Mwrnk/rusteezy/main/docs/gifs/raymarch.gif" alt="Ray-marched metaballs"></td>
+    <td><img src="https://raw.githubusercontent.com/Mwrnk/rusteezy/main/docs/gifs/life.gif" alt="Game of Life on a dense grid"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>raymarch</b>: one ray per cell, soft shadows, AO, floor reflections</td>
+    <td align="center"><b>life</b>: Game of Life on 56,000+ cells with ember trails</td>
+  </tr>
+</table>
+
 | Example | Run | Keys |
 |---|---|---|
 | `hello` | `cargo run --release --example hello` | |
@@ -114,6 +139,10 @@ cargo run --release --example tree
 | `plasma` | `cargo run --release --example plasma` | `P` palette |
 | `torus` | `cargo run --release --example torus` | |
 | `starfield` | `cargo run --release --example starfield` | |
+| `galaxy` | `cargo run --release --example galaxy` | `--stars <n>` |
+| `flow` | `cargo run --release --example flow` | `--particles <n>` |
+| `raymarch` | `cargo run --release --example raymarch` | |
+| `life` | `cargo run --release --example life` | `Space` turbo (240 gen/s) |
 
 Every example accepts the same flags (see `rusteezy::cli`):
 
@@ -129,17 +158,24 @@ Every example accepts the same flags (see `rusteezy::cli`):
 
 ## Performance
 
-`--bench` renders the full pipeline off-screen and waits for the GPU on every
-frame, which is the most conservative measurement. Apple M2, 2560×1634 px,
-213×68 grid (default font), `--size 1280x860 --bench 1500`:
+`--bench` renders the full pipeline (simulation, drawing, upload and every GPU
+pass) off-screen, and waits for the GPU on every frame. That is the most
+conservative measurement, with CPU and GPU fully serialized. Apple M2
+(4 performance + 4 efficiency cores), 2560×1600 px window, default sizes,
+`--bench 1200`:
 
-| Example | avg frame | p99 frame |
-|---|---|---|
-| tree | 2.2 ms (≈455 fps) | 4.6 ms (≈220 fps) |
-| fireworks | 2.2 ms (≈455 fps) | 4.3 ms (≈235 fps) |
-| torus | 3.7 ms (≈275 fps) | 5.6 ms (≈180 fps) |
+| Example | Work per frame | Grid | avg frame | p99 frame |
+|---|---|---|---|---|
+| tree | ray-trace every cell, garland, ~1,500 particles | 213×66 | 2.2 ms (≈455 fps) | 4.6 ms (≈220 fps) |
+| fireworks | particles + bloom | 213×66 | 2.2 ms (≈455 fps) | 4.3 ms (≈235 fps) |
+| galaxy | 300,000 stars | 213×66 | 2.9 ms (≈340 fps) | 6.4 ms (≈155 fps) |
+| life | 56,658 cells, one generation each 1/30 s | 426×133 | 2.9 ms (≈350 fps) | 6.9 ms (≈145 fps) |
+| flow | 200,000 particles + trails | 213×66 | 4.8 ms (≈210 fps) | 7.3 ms (≈135 fps) |
+| raymarch | 26,700 rays + shadows + AO + reflections | 284×94 | 4.8 ms (≈210 fps) | 9.2 ms (≈110 fps) |
+| galaxy `--stars 1000000` | 1,000,000 stars | 213×66 | 5.4 ms (≈185 fps) | 9.3 ms (≈110 fps) |
 
-On macOS a window presents at the display's refresh rate even with `--uncapped`.
+In a normal window, frames present at the display's refresh rate (even with
+`--uncapped` on macOS); the table shows the headroom behind that.
 
 ## How it works
 
