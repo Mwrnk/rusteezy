@@ -1,0 +1,12 @@
+# rusteezy crab: one character per pixel. This file is the single source for
+# assets/logo/crab.svg (scripts/logo.py) and examples/crab.rs.
+#   .  empty    O  shell    L  highlight    D  shadow    W  eye white    K  pupil
+.OO.O......O.OO.
+.OOOO......OOOO.
+..OO........OO..
+...O.OOOOOO.O...
+...OLLOOOOOOO...
+..OOOWKOOKWOOO..
+.OOOOOOOOOOOOOO.
+.O.OODDDDDDOO.O.
+O.O..........O.O
