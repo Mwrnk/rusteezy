@@ -79,6 +79,12 @@ cargo run --release --example tree
 
 <table>
   <tr>
+    <td colspan="2"><img src="https://raw.githubusercontent.com/Mwrnk/rusteezy/main/docs/gifs/bridge.gif" width="100%" alt="Suspension bridge at golden hour"></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><b>bridge</b>: golden hour, every part drawn along its length; the water mirrors sky, sun and bridge</td>
+  </tr>
+  <tr>
     <td><img src="https://raw.githubusercontent.com/Mwrnk/rusteezy/main/docs/gifs/tree.gif" alt="3D Christmas tree"></td>
     <td><img src="https://raw.githubusercontent.com/Mwrnk/rusteezy/main/docs/gifs/fireworks.gif" alt="Fireworks over a city"></td>
   </tr>
@@ -133,6 +139,7 @@ which is a dev-dependency only.
 |---|---|---|
 | `hello` | `cargo run --release --example hello` | |
 | `crab` | `cargo run --release --example crab` | |
+| `bridge` | `cargo run --release --example bridge` | `R` rebuild |
 | `tree` | `cargo run --release --example tree` | `R` rebuild · `G` garland mode · `B` bloom |
 | `fireworks` | `cargo run --release --example fireworks` | `Space` volley |
 | `fire` | `cargo run --release --example fire` | |
@@ -167,6 +174,7 @@ conservative measurement, with CPU and GPU fully serialized. Apple M2
 | Example | Work per frame | Grid | avg frame | p99 frame |
 |---|---|---|---|---|
 | tree | ray-trace every cell, garland, ~1,500 particles | 213×66 | 2.2 ms (≈455 fps) | 4.6 ms (≈220 fps) |
+| bridge | sky, length-based bridge, mirrored water with glitter | 256×84 | 3.2 ms (≈310 fps) | 5.8 ms (≈175 fps) |
 | fireworks | particles + bloom | 213×66 | 2.2 ms (≈455 fps) | 4.3 ms (≈235 fps) |
 | galaxy | 300,000 stars | 213×66 | 2.9 ms (≈340 fps) | 6.4 ms (≈155 fps) |
 | life | 56,658 cells, one generation each 1/30 s | 426×133 | 2.9 ms (≈350 fps) | 6.9 ms (≈145 fps) |

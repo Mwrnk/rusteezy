@@ -16,3 +16,4 @@ GIF_WIDTH=480              ./gif.sh galaxy     0     6
 GIF_WIDTH=480              ./gif.sh flow       4     5
 GIF_WIDTH=480              ./gif.sh raymarch   0     6
 GIF_WIDTH=440 GIF_FPS=12   ./gif.sh life       1     3   --font 6
+GIF_WIDTH=640              ./gif.sh bridge     0     9.5

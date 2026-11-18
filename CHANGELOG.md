@@ -7,6 +7,8 @@ All notable changes to this project are documented here. The format follows
 ## [Unreleased]
 
 ### Added
+- `bridge` example: a suspension bridge at golden hour that draws itself along
+  its length, over water that mirrors the sky, sun and bridge.
 - Performance examples, multi-threaded with rayon (a dev-dependency only):
   `galaxy` (300k stars), `flow` (200k particles), `raymarch` (per-cell ray
   marching with shadows, AO and reflections) and `life` (Game of Life on a dense grid).
